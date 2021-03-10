@@ -3,6 +3,7 @@
 
 
 import function as f
+import logging as lg
 
 def main():
 
@@ -21,7 +22,9 @@ def main():
 
     print(f.add_competence())
 
-
-if __name__ == "__main__":
-    main()
+try :
+    if __name__ == "__main__":
+        main()
+except :
+    lg.error("Impossible to run main")
 
