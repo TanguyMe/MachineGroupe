@@ -99,7 +99,7 @@ def a_competence(participants):
 def question_niveau():
     """Function that ask if we want to share the group by equal or not level"""
     print("Do you want to share by equal levels?")
-    resp = input()
+    resp = input().lower()
     if resp == 'yes':
         return p_meme_niveau(participants)
     else:
@@ -115,8 +115,7 @@ def p_meme_niveau(participants):
         p_2 = sorted(a_competence(participants).items(),
                  key=lambda t: t[1])  # Trie la liste des apprenants en fonction des notes
         for i in range(num_of_group):  # On itere autant de fois qu'on veut de groupes
-            if len(p_2) - len(
-                    group_p) * num_to_select >= num_to_select:  # Permet de vérifier qu'il y a assez de personnes pour un groupe complet
+            if len(p_2) - len(group_p) * num_to_select >= num_to_select:  # Permet de vérifier qu'il y a assez de personnes pour un groupe complet
                 group_p.append([])
                 for j in range(
                         num_to_select):  # On itere autant de fois qu'il y a de personnes qui viennent d'être assignées à un groupe
@@ -126,8 +125,7 @@ def p_meme_niveau(participants):
 
         for k in range(len(participants) - len(
                 group_p) * num_to_select):  # On regarde s'il reste des personnes dans le groupe participants
-            group_p[-1 - k % len(group_p)].append(p_2[-1 - k][
-                                                      0])  # On les répartit 1 par 1 dans les groupes déjà existants en commençant par les plus proches en niveau (k%len pour par exemple groupes de 4 avec 11 personnes : on veut que répartir dans les 2 groupes déjà existants)
+            group_p[-1 - k % len(group_p)].append(p_2[-1 - k][0])  # On les répartit 1 par 1 dans les groupes déjà existants en commençant par les plus proches en niveau (k%len pour par exemple groupes de 4 avec 11 personnes : on veut que répartir dans les 2 groupes déjà existants)
         return group_p
     except :
-        lg.error("Impossible to create the groups by level ")
+        lg.error("Impossible to create the groups by level")

@@ -6,7 +6,7 @@ import function as f
 import logging as lg
 
 def main():
-
+    """Main function that is used as a menu to create the groups"""
     print("Who are the participants?")
     participant1 = input()
 
